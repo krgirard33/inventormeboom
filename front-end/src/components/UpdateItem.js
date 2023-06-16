@@ -64,6 +64,17 @@ export default function UpdateItem({ id }) {
             required
           ></Form.Control>
         </Form.Group>
+        <Form.Group controlId="formDescription" className="m-5">
+          <Form.Label>Category: </Form.Label>
+          <Form.Control
+            type="text"
+            value={editItem.itemCategory}
+            onChange={(e) =>
+              setEditItem({ ...editItem, itemCategory: e.target.value })
+            }
+            required
+          ></Form.Control>
+        </Form.Group>
         <Form.Group controlId="formLocation" className="m-5">
           <Form.Label>Location: </Form.Label>
           <Form.Control

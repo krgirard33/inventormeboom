@@ -155,6 +155,7 @@ export default function ItemsList() {
                         toEditTitle={item.itemName}
                         toEditItemQuantity={item.itemQuantity}
                         toEditDescription={item.description}
+                        toEditItemCategory={item.itemCategory}
                         toEditLocation={item.location}
                         item={item.id}
                       />
