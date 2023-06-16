@@ -54,6 +54,7 @@ public class Item {
 
     public void setItemCategory(String itemCategory) {
         this.itemCategory = itemCategory;
+    }
 
     public UUID getUserId() {
         return userId;

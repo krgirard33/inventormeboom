@@ -119,7 +119,7 @@ export default function ItemsList() {
                   ? item
                   : item.itemName.toLowerCase().includes(search) ||
                       item.description.toLowerCase().includes(search) ||
-                      item.location.toLowerCase().includes(search); || 
+                      item.location.toLowerCase().includes(search) || 
                       item.itemCategory.toLowerCase().includes(search);
               })
               .map((item) => (
