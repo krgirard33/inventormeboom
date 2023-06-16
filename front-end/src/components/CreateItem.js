@@ -3,11 +3,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateItem() {
+
   const navigate = useNavigate();
+
   const [item, setItem] = useState({
     itemName: "",
     itemQuantity: "",
     description: "",
+    itemCategory: "",
     location: ""
   });
   
@@ -88,6 +91,19 @@ export default function CreateItem() {
                 placeholder="Where is this item located"
                 name="location"
                 value={item.location}
+                onChange={onChangeItem}
+              />
+            </div>
+            <div className="text-center mb-3">
+              <label htmlFor="description" className="form-label">
+                Category
+              </label>
+              <input
+                type={"text"}
+                className="form-control"
+                placeholder="Enter Category"
+                name="itemCategory"
+                value={item.itemCategory}
                 onChange={onChangeItem}
               />
             </div>

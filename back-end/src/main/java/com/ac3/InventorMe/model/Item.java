@@ -12,6 +12,7 @@ public class Item {
     private String itemName;
     private String description;
     private int itemQuantity;
+    private String itemCategory;
     private UUID userId;
     private String location;
 
@@ -46,6 +47,13 @@ public class Item {
     public void setItemQuantity(int itemQuantity) {
         this.itemQuantity = itemQuantity;
     }
+
+    public String getItemCategory() {
+        return itemCategory;
+    }
+
+    public void setItemCategory(String itemCategory) {
+        this.itemCategory = itemCategory;
 
     public UUID getUserId() {
         return userId;

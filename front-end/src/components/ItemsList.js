@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function ItemsList() {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
   const [open, setOpen] = useState({ update: false, id: null });
   const navigate = useNavigate();
@@ -97,6 +97,7 @@ export default function ItemsList() {
               <td> Name </td>
               <td class="test"> Quantity </td>
               <td> Description </td>
+              <td> Category </td>
               <td class="test"> Location </td>
               <td></td>
               <td>
@@ -118,7 +119,8 @@ export default function ItemsList() {
                   ? item
                   : item.itemName.toLowerCase().includes(search) ||
                       item.description.toLowerCase().includes(search) ||
-                      item.location.toLowerCase().includes(search);
+                      item.location.toLowerCase().includes(search); || 
+                      item.itemCategory.toLowerCase().includes(search);
               })
               .map((item) => (
                 <tr key={item.id}>
@@ -126,6 +128,7 @@ export default function ItemsList() {
                   <td> {item.itemName} </td>
                   <td> {item.itemQuantity} </td>
                   <td> {item.description} </td>
+                  <td> {item.itemCategory} </td>
                   <td> {item.location} </td>
                   <Popup
                     trigger={
