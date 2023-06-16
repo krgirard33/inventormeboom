@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import bcrypt from "bcryptjs";
 
 export default function Registration() {
   const [name, setName] = useState("");
@@ -35,20 +36,23 @@ export default function Registration() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    const hashedPassword = bcrypt.hashSync(password, 10);
     try {
-      await axios
-        .post("/registration", {
+      const response = await axios.post("/registration", {
           name: name,
           company: company,
           email: email,
-          password: setPassword,
-        })
-        .then(navigate("/items"));
+        });
+      const userId = response.data;
+      
       await axios.post("/login", {
         email: email,
-        password: password,
+        password: hashedPassword,
+        userId: userId
       });
       alert("Registration Success!");
+      navigate("/login");
     } catch (err) {
       alert(err);
     }
@@ -58,7 +62,7 @@ export default function Registration() {
     <div id="registration-page">
       <h1 className="text-center">Register</h1>
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formName" className="m-5">
+        <Form.Group id="registration-form" controlId="formName" className="m-5">
           <Form.Label>Name: </Form.Label>
           <Form.Control
             type="name"
@@ -106,6 +110,8 @@ export default function Registration() {
         <Button
           className="mx-5"
           variant="primary"
+          variant="warning"
+          id="registration-button"
           type="submit"
           disabled={!validateForm()}
         >

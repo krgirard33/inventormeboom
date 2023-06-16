@@ -10,10 +10,10 @@ Items
 - Name
 - Qty 
 - Details  
-- Category
-- location
 - CRUD
 <!-- 
+- Category
+- location
 - Images
 - Unique categories
 - Cost
@@ -46,3 +46,7 @@ CSS
 - Spring Boot
 - MySQL
 - Axios
+
+### Additional
+- Create a .env.properties file in back-end\main\java\com\ac3\InventorMe\resources
+- Use the .env.template.properties file as a guide for what to enter on .env.properties

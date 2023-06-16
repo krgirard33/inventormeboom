@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
@@ -17,13 +18,20 @@ public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
 
-    public ItemController(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
+    @PostMapping("/item")
+    public ResponseEntity<Item> createItem(@RequestBody Item item) {
+        Item newItem = itemRepository.save(item);
+        return ResponseEntity.ok(newItem);
     }
 
-    @PostMapping("/item")
-    Item newItem(@RequestBody Item newItem) {
-        return itemRepository.save(newItem);
+    @GetMapping("/items")
+    List<Item> getAllItems(@RequestHeader("UserId") String authorization) {
+        UUID loginId = UUID.fromString(authorization);
+        return itemRepository.findByUserId(loginId);
+    }
+
+    public ItemController(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
     }
 
     @PutMapping("/item/{id}")
@@ -34,16 +42,12 @@ public class ItemController {
             existingItem.setItemQuantity(editItem.getItemQuantity());
             existingItem.setDescription(editItem.getDescription());
             existingItem.setItemCategory(editItem.getItemCategory());
+            existingItem.setLocation(editItem.getLocation());
             itemRepository.save(existingItem);
             return ResponseEntity.ok().body("Item updated successfully!");
         } else {
             return ResponseEntity.notFound().build();
         }
-    }
-
-    @GetMapping("/items")
-    List<Item> getAllItems() {
-        return itemRepository.findAll();
     }
 
     @DeleteMapping("/item")

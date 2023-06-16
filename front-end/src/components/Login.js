@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import styles from "./Login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -17,16 +18,24 @@ export default function Login() {
         password: password,
       });
 
-          if (response.status === 200) {
-            navigate("/items");
-          }
-        } catch (err) {
-          if (err.response && err.response.status === 401) {
-             alert("Login failed. Please check your email and password.");
-             } else {
-             alert("An error occurred. Please try again later.");
-            }
-        }
+      if (response.status === 200) {
+
+        const authToken = response.data.token;
+        const userId = response.data.userId;
+        localStorage.setItem("token", authToken);
+        localStorage.setItem("userId", userId);
+
+        navigate("/items");
+      }
+
+    } catch (err) {
+      if (err.response && err.response.status === 401) {
+        alert("Login failed. Please check your email and password.");
+      } else {
+        alert("An error occurred. Please try again later.");
+      }
+    }
+
   }
 
   return (

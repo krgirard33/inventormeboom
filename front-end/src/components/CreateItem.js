@@ -11,17 +11,27 @@ export default function CreateItem() {
     itemQuantity: "",
     description: "",
     itemCategory: "",
+    location: ""
   });
-
+  
   const onChangeItem = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
-
+  
   const onSubmit = async (e) => {
-    try {
-      await axios.post("/item", item).then(navigate("/items"));
-    } catch (err) {
-      alert(err);
+      try {
+        const userId = localStorage.getItem("userId");
+        const newItem = {
+          itemName: item.itemName,
+          itemQuantity: item.itemQuantity,
+          description: item.description,
+          location: item.location,
+          userId: userId
+        };
+      await axios.post("/item", newItem)
+      .then(navigate("/items"));
+      } catch (err) {
+        alert(err);
     }
   };
 
@@ -49,8 +59,8 @@ export default function CreateItem() {
               <label htmlFor="Quantity" className="form-label">
                 Quantity
               </label>
-              <input
-                type={"text"}
+              <input 
+                type={"number"}
                 className="form-control"
                 placeholder="Enter Quantity to Store"
                 name="itemQuantity"
@@ -69,6 +79,18 @@ export default function CreateItem() {
                 placeholder="Enter Brief Description of Item"
                 name="description"
                 value={item.description}
+                onChange={onChangeItem}
+              />
+              </div>
+              <div className="text-center mb-3">
+              <label htmlFor="location" className="form-label">
+                Location
+              </label>
+              <input type={"text"}
+                className="form-control"
+                placeholder="Where is this item located"
+                name="location"
+                value={item.location}
                 onChange={onChangeItem}
               />
             </div>
