@@ -5,13 +5,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./UpdateItem.css"
 
-export default function UpdateItem({ id }) {
+export default function UpdateItem({ id, item }) {
   const navigate = useNavigate();
   const [editItem, setEditItem] = useState({
-    itemName: "",
-    itemQuantity: "",
-    description: "",
-    location: "",
+    itemName: item.itemName,
+    itemQuantity: item.itemQuantity,
+    description: item.description,
+    itemCategory: item.itemCategory,
+    location: item.location,
   });
   const handleSubmit = async (e) => {
     try {
