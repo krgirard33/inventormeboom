@@ -151,13 +151,8 @@ export default function ItemsList() {
                     {open.update && open.id === item.id && (
                       <UpdateItem
                         id={open.id}
-                        onClose={handleClose}
-                        toEditTitle={item.itemName}
-                        toEditItemQuantity={item.itemQuantity}
-                        toEditDescription={item.description}
-                        toEditItemCategory={item.itemCategory}
-                        toEditLocation={item.location}
-                        item={item.id}
+                        //onClose={handleClose}
+                        item={item}
                       />
                     )}
                   </Popup>
