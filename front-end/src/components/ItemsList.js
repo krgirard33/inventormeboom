@@ -12,9 +12,6 @@ export default function ItemsList() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [open, setOpen] = useState({ update: false, id: null });
   const navigate = useNavigate();
-  const handleClose = () => {
-    setOpen({ update: false, id: null });
-  };
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
