@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(0,0,069);
+    color:ghostwhite;
+    text-align: center;
+  }
+  
+  
+  h1 {
+    padding-bottom: 1rem;
+    padding-top:1rem;
+    color:ghostwhite;
+    font-family: "Rubik", sans-serif;
+  }
+
+  a {
+    font-size: larger;
+    padding: 1rem;
+  }
+
+  @media (max-width: 576px) {
+    .login-box {
+      padding: 1rem;
+    }
+  
+    .login-button {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
