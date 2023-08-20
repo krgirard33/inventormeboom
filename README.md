@@ -34,6 +34,7 @@ App
 - Password reset
 - Tokens
 - CRUD
+- 404 system
 
 CSS
 
@@ -50,6 +51,10 @@ CSS
 - MySQL
 - Axios
 
-### Additional
-- Create a .env.properties file in back-end\main\java\com\ac3\InventorMe\resources
+### Instructions
+- Download code
+- Create a .env.properties file in back-end\main\resources\
 - Use the .env.template.properties file as a guide for what to enter on .env.properties
+- run Java
+- cd to the front-end folder, open terminal and type 'npm run start'
+- open browser to http://localhost:3000/

@@ -8,9 +8,10 @@ import Landing from "./components/Landing";
 import Login from "./components/Login";
 import Header from "./components/Header";
 import UpdateItem from "./components/UpdateItem";
+import NotFound from "./components/404";
 
 const Protected = ({ children }) => {
-   const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
   if(!token) {
     return <Navigate to="/" replace/>;
   }
@@ -29,6 +30,7 @@ function App() {
           <Route path="/add" element={<Protected><Item /></Protected>}/>
           <Route path="/items" element={<Protected><ItemsList /></Protected>} />
           <Route path="/item/:id" element={<Protected><UpdateItem /></Protected>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
