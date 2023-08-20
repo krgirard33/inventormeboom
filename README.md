@@ -1,3 +1,4 @@
+![InventorMe logo](front-end/public/logo_transparent.png)
 ### Overview
 
 Ever stored an item in a safe place, and now have no idea where that place is? InventorMe is here to help with that problem, so you can quickly find where you stored the skirt for the Christmas tree.
